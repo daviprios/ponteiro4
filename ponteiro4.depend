@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1602710250 source:c:\users\davip\documents\codes\c\ponteiro4\main.c
+	<stdio.h>
+	<stdlib.h>
+
