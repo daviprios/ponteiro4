@@ -69,10 +69,13 @@ void orderer(int *start, int size){
     for (int count = 0; count < size; count++){
         if (start[count] > start[count + 1]){
             int temp = start[count];
+            printf("&%d", start[count]);
             start[count] = start[count + 1];
             start[count + 1] = temp;
+            printf("#%d\t%d\t",temp, start[count]);
         }
     }
+    printf("\n");
     orderer(start, size - 1);
 }
 
@@ -84,7 +87,7 @@ void list_aux_ordered(int **data, int* datasize){
         for(int countY = 0; countY < datasize[countX]; countY++){
             column[countY] = data[countX][countY];
         }
-        orderer(column, datasize[countX]);
+        orderer(column, datasize[countX] - 1);
         for(int count = 0; count < datasize[countX]; count++){
             printf("%d  ", column[count]);
         }
@@ -102,12 +105,12 @@ void list_ordered(int **data, int* datasize){
     int counter = 0;
     for(int countX = 0; countX < DATASIZE; countX++){
         for(int countY = 0; countY < datasize[countX]; countY++){
-            counter++;
             column[counter] = data[countX][countY];
+            counter++;
         }
     }
     orderer(column, size);
-    for(int count = 0; count < counter; count++){
+    for(int count = 0; count < size; count++){
         printf("%d  ", column[count]);
     }
     printf("\n");
